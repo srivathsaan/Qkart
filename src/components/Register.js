@@ -12,6 +12,8 @@ import "./Register.css";
 const Register = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [form, setform] = useState({username: '', password: '', confirmPassword: ''});
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
   // const [username, setUsername] = useState("");
   // const [password, setPassword] = useState("");
   // const [confirmPassword, setConfirmPassword] = useState("");
@@ -55,6 +57,7 @@ const Register = () => {
    */
   // const register = async (formData) => {};
   const register = async (formData) => {
+    setLoading(true);
     const {username, password, confirmPassword}=formData;
 
     if (validateInput(formData)){
@@ -62,6 +65,7 @@ const Register = () => {
     try {
       const res = await axios.post(url, { username, password });
       enqueueSnackbar("Registered Successsfully", { variant: "success" });
+      history.push("/login");
     } catch (err) {
       if (
         err.response?.status &&
@@ -79,6 +83,7 @@ const Register = () => {
         );
       }
     }
+    setLoading(false);
   }
   };
 
@@ -133,6 +138,7 @@ const Register = () => {
     >
       <Header hasHiddenAuthButtons />
       <Box className="content">
+        {loading && <CircularProgress />}
         <Stack spacing={2} className="form">
           <h2 className="title">Register</h2>
           <TextField
@@ -170,9 +176,10 @@ const Register = () => {
           </Button>
           <p className="secondary-action">
             Already have an account?{" "}
-            <a className="link" href="#">
-              Login here
-            </a>
+            {/* <a className="link" href="#"> */}
+            <Link to="/login">Login here</Link>
+              {/* Login here */}
+            {/* </a> */}
           </p>
         </Stack>
       </Box>
