@@ -51,7 +51,7 @@ const Login = () => {
     setLoading(true);
     const {username, password}=formData;
     // console.log(config.endpoint);
-    console.log("Result is: ", validateInput(formData))
+    // console.log("Result is: ", validateInput(formData))
 
     if (validateInput(formData)){
     let url = `${config.endpoint}/auth/login`;

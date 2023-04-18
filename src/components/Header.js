@@ -12,7 +12,7 @@ const Header = ({ children, hasHiddenAuthButtons }) => {
   const handleLogout = () => {
     // Implement your logout logic here
     // For example, call an API to log out the user
-    console.log("Logged out");
+    // console.log("Logged out");
     // Clear the user's login status in local storage
     localStorage.removeItem('token');
     localStorage.removeItem('username');
@@ -31,6 +31,9 @@ const Header = ({ children, hasHiddenAuthButtons }) => {
         <Box className="header-title">
             <img src="logo_light.svg" alt="QKart-icon"></img>
         </Box>
+        {children}
+
+
         {hasHiddenAuthButtons ? (
         <Button
           className="explore-button"
