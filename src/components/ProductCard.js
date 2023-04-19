@@ -12,44 +12,31 @@ import React from "react";
 import "./ProductCard.css";
 
 const ProductCard = ({ product, handleAddToCart }) => {
-
-  const { name, category, cost, rating, image, _id } = product;
   return (
     <Card className="card">
-      <CardMedia
-        className="card-media"
-        component="img"
-        image={image}
-        title={name}
-        alt={_id}
-        sx={{ height: 140 }
-    }
-      />
+      <CardMedia component="img" image={product.image} alt={product.name} />
       <CardContent>
-        <Typography variant="h6" component="div">
-          {name}
+        <Typography variant="body1" style={{ marginBottom: "0.5rem" }}>
+          {product.name}
         </Typography>
-        {/* <Typography variant="body2" color="text.secondary">
-          {category}
-        </Typography> */}
-        <Typography variant="h6" color="text.primary" component="div">
-          ${cost}
-        </Typography>
-        <Rating
-          name="product-rating"
-          value={rating}
-          precision={0.5}
-          readOnly
-        />
-         </CardContent>
-      <CardActions className="card-actions card-button" >
-        <Button variant="contained" 
-          // variant="outlined"
-          fullWidth
-          startIcon={<AddShoppingCartOutlined />}
-          onClick={() => handleAddToCart(_id)}
+        <Typography
+          variant="body1"
+          fontWeight="bold"
+          style={{ marginBottom: "0.5rem" }}
         >
-          Add to cart
+          ${product.cost}
+        </Typography>
+        <Rating name="read-only" value={product.rating} readOnly />
+      </CardContent>
+      <CardActions className="card-actions">
+        <Button
+          variant="contained"
+          startIcon={<AddShoppingCartOutlined />}
+          className="card-button"
+          onClick={handleAddToCart}
+          fullWidth
+        >
+          ADD TO CART
         </Button>
       </CardActions>
     </Card>
