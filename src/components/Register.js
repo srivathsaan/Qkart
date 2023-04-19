@@ -36,7 +36,10 @@ const Register = () => {
    * Definition for register handler
    * - Function to be called when the user clicks on the register button or submits the register form
    *
+<<<<<<< HEAD
    *
+=======
+>>>>>>> 5767137389eff21180db4866ca63d74ef791cdc7
    * @param {{ username: string, password: string, confirmPassword: string }} formData
    *  Object with values of username, password and confirm password user entered to register
    *
